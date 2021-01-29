@@ -9,9 +9,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       -
-        name: Check out code
-        uses: actions/checkout@v2
-      -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v1
       -
@@ -33,10 +30,3 @@ jobs:
       -
         name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
-      -
-        name: Update repo description
-        uses: peter-evans/dockerhub-description@v2
-        with:
-          username: ${{ secrets.DOCKERHUB_USER }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
-          repository: odarbelaeze/teama-api
